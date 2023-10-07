@@ -1,0 +1,905 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>ecoBazaar</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script>
+        // load css files from CDN if local node_modules fail
+        function loadCssFromCDN(css) {
+            // create new link tag
+            const link = document.createElement('link');
+            if (css === 'animate.css') {
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
+            } else if (css === 'font-awesome.css') {
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+            }
+            link.rel = 'stylesheet';
+
+            // add link tag to head section
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+
+        // load js files from CDN if local node_modules fail
+        function loadJsFromCDN(js) {
+            if (js === 'waypoints.js') {
+                document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"><\/script>');
+            } else if (js === 'jquery.js') {
+                document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" href="css/queries.css">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabriela&display=swap" rel="stylesheet">
+    <style>
+
+        .navbar{
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        nav{
+            flex: 1;
+            text-align: right;
+        }
+        nav ul{
+            display: inline-block;
+            list-style-type: none;
+        }
+        nav ul li{
+            display: inline-block;
+            margin-right: 20px;
+        }
+        a{
+            text-decoration: none;
+            color: #555;
+        }
+        p{
+            color: #555;
+        }
+        .container{
+            max-width: 1300px;
+            margin: auto;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+        .row{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .col-2{
+            flex-basis: 50%;
+            min-width: 300px;
+        }
+        .col-2 img{
+            max-width: 100%;
+            padding: 50px 0;
+        }
+        .col-2 h1{
+            font-size: 50px;
+            line-height: 60px;
+            margin: 25px 0;
+        }
+        .btn{
+            display: inline-block;
+            background: #ff523b;
+            color: #fff;
+            padding: 8px 30px;
+            margin: 30px 0;
+            border-radius: 30px;
+            transition: background 0.5s;
+        }
+        .btn:hover{
+            background: #563434;
+        }
+        .header{
+            background: radial-gradient(#fff,#ffd6d6);
+        }
+        .header row{
+            margin-top: 70px;
+        }
+        .categories{
+            margin: 70px 0;
+        }
+        .col-3{
+            flex-basis: 30%;
+            min-width: 250px;
+            margin: bottom;
+        }
+        .col-3 img{
+            width: 100%;
+        }
+        .small-container{
+            max-width: 1080px;
+            margin: auto;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+        .col-4{
+            flex-basis: 25%;
+            padding: 10px;
+            min-width: 200px;
+            margin-bottom: 50px;
+            transition: transform 0.5s;
+        }
+        .col-4 img{
+            width: 100%;
+        }
+        
+        .title{
+            text-align: center;
+            margin: 0 auto 80px;
+            position: relative;
+            line-height: 60px;
+            color: #555;
+        }
+        .title::after{
+            content: '';
+            background: #ff523b;
+            width: 80px;
+            height: 5px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        
+        }
+        h4{
+            color: #555;
+            font-weight: normal;
+        }
+        .col-4 p{
+            font-size: 14px;
+        }
+        
+        .rating .fa{
+            color: #ff523b;
+        }
+        .col-4:hover{
+            transform: translateY(-5px);
+        }
+        /* OFFER */
+        .offer{
+            background: radial-gradient(#fff,#ffd6d6);
+            margin-top: 80px;
+            padding: 30px 0;
+        }
+        .col-2 .offer-img{
+            padding: 50px;
+        }
+        small{
+            color: #555;
+        }
+        
+        
+        /*Testimonials*/
+        /* CSS for the testimonial section */
+        .new-testimonial {
+            background-color: #f5f5f5;
+            padding: 20px;
+          }
+          
+          /* CSS for the container holding testimonials */
+          .new-small-container {
+            display: flex;
+            justify-content: space-between;
+          }
+          
+          /* CSS for individual testimonial columns */
+          .new-col-3 {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+          }
+          
+          /* CSS for the quote icon */
+          .new-class-quote {
+            font-size: 24px;
+            color: #333;
+          }
+          
+          /* CSS for the user's name */
+          .new-class-name {
+            font-size: 16px;
+            color: #333;
+            margin-top: 10px;
+          }
+          
+          /* Custom CSS for the rating stars */
+          .rating {
+            margin-top: 10px;
+          }
+          
+          /* Style for filled stars */
+          .rating .fa-star {
+            color: #ff523b /* Change the color to your preference */
+          }
+          
+          /* Style for half-filled star */
+          .rating .fa-star-half {
+            color: #ff523b /* Change the color to your preference */
+          }
+          
+          /* Style for blank stars */
+          .rating .fa-star-o {
+            color: #ff523b /* Change the color to your preference */
+          }
+          
+        
+        
+          /* BRANDS */
+          .brands{
+            margin: 100px auto;
+          }
+          .col-5{
+            width: 160px;
+          }
+          .col-5 img{
+            width: 100%;
+            cursor: pointer;
+            filter: grayscale(100%);
+          }
+          .col-5 img:hover{
+            filter: grayscale(0);
+          }
+        
+        
+          /* FOOTER */
+          .footer{
+            background: #000;
+            color: #8a8a8a;
+            font-size: 14px;
+            padding: 60px 0 20px;
+          }
+          .footer p{
+            color: #8a8a8a;
+          }
+          .footer h3{
+            color: #fff;
+            margin-bottom: 20px;
+          }
+          .footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4{
+            min-width: 250px;
+            margin-bottom: 20px;
+          }
+          .footer-col-1{
+            flex-basis: 30%;
+          }
+          .footer-col-2{
+            flex: 1;
+            text-align: center;
+          }
+          .footer-col-2 img{
+            width: 180px;
+            margin-bottom: 20px;
+          }
+          .footer-col-3, .footer-col-4{
+            flex-basis: 12%;
+            text-align: center;
+          }
+          ul{
+            list-style-type: none;
+          }
+          .app-logo{
+            margin-top: 20px;
+          }
+          .app-logo img{
+            width: 140px;
+          }
+          .footer hr{
+            border: none;
+            background: #b5b5b5;
+            height: 1px;
+            margin: 20px 0;
+          }
+          .copyright{
+            text-align: center;
+          }
+        
+        
+        
+          .menu-icon{
+            width: 28px;
+            margin-left: 20px;
+            display: none;
+          }
+        
+        
+        
+        /* ALL PRODUCTS */
+        .row-2{
+            justify-content: space-between;
+            margin: 100px auto 50px;
+        }
+        select{
+            border: 1px solid #ff523b;
+            padding: 5px;
+        }
+        select:focus{
+            outline: none;
+        }
+        .page-btn{
+            margin: 0 auto 80px;
+        }
+        
+        .page-btn span{
+            display: inline-block;
+            border: 1px solid #ff523b;
+            margin-left: 10px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        .page-btn span:hover{
+            background: #ff523b;
+            color: #fff;
+        }
+        
+        
+        /* 
+        SINGLE PRODUCT DETAILS */
+        .single-product{
+          margin-top: 80px;
+        }
+        .single-product .col-2 img{
+          padding: 0;
+        }
+        .single-product .col-2{
+          padding: 20px;
+        }
+        .single-product h4{
+          margin: 20px 0;
+          font-size: 22px;
+          font-weight: bold;
+        }
+        .single-product select{
+          display: block;
+          padding: 10px;
+          margin-top: 20px;
+        }
+        .single-product input{
+          width: 50px;
+          height: 40px;
+          padding-left: 10px;
+          font-size: 20px;
+          margin-right: 10px;
+          border: 1px solid #ff523b;
+        }
+        input:focus{
+          outline: none;
+        }
+        
+        .single-product .fa{
+          color: #ff523b;
+          margin-left: 10px;
+        }
+        .small-img-row{
+          display: flex;
+          justify-content: space-between;
+        }
+        .small-img-col{
+          flex-basis: 24%;
+          cursor: pointer;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /* Contact Form Styles */
+        
+        /* Desktop styles (default) */
+        .contact-form {
+          background-color: #f5f5f5;
+          padding: 50px 0;
+          text-align: center;
+        }
+        
+        .contact-form h1 {
+          font-size: 36px;
+          margin-bottom: 20px;
+          color: #333;
+        }
+        
+        .contact-form p {
+          font-size: 18px;
+          margin-bottom: 30px;
+          color: #555;
+        }
+        
+        .contact-form form {
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 10px;
+          color: #333;
+        }
+        
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 20px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+        }
+        
+        .contact-form textarea {
+          resize: vertical;
+        }
+        
+        .contact-form input[type="submit"] {
+          background-color: #ff523b;
+          color: #fff;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          font-size: 18px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        
+        .contact-form input[type="submit"]:hover {
+          background-color: #563434;
+        }
+        
+        /* Mobile styles (adjust as needed) */
+        @media only screen and (max-width: 768px) {
+          .contact-form h1 {
+              font-size: 28px;
+          }
+        
+          .contact-form p {
+              font-size: 16px;
+          }
+        
+          .contact-form form {
+              padding: 10px;
+          }
+        
+          .contact-form label {
+              font-size: 16px;
+          }
+        
+          .contact-form input[type="text"],
+          .contact-form input[type="email"],
+          .contact-form textarea {
+              font-size: 14px;
+          }
+        
+          .contact-form input[type="submit"] {
+              font-size: 16px;
+          }
+        }
+        
+        
+        
+        /* CART ITEMS */
+        .cart-page{
+          margin: 80px auto;
+        }
+        table{
+        
+          width: 100%;
+          border-collapse: collapse;
+        }
+        .cart-info{
+          display: flex;
+          flex-wrap: wrap;
+        }
+        th{
+          text-align: left;
+          padding: 5px;
+          color: #fff;
+          background: #ff523b;
+          font-weight: normal;
+        }
+        
+        td{
+          padding: 10px 5px;
+        }
+        td input{
+          width: 40px;
+          height: 30px;
+          padding: 5px;
+        
+        }
+        td a{
+          color: #ff523b;
+          font-size: 12px;
+        }
+        
+        td img{
+          width: 80px;
+          height: 80px;
+          margin-right: 10px;
+        }
+        
+        
+        
+        
+          /* MEDIA QUERY */
+        
+          @media only screen and (max-width:650px){
+            nav ul{
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background: #333;
+                width: 100%;
+                overflow: hidden;
+                transition: max-height 0.5s;
+            }
+            nav ul li{
+                display: block;
+                margin-right: 50px;   
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            nav ul li a{
+                color: #fff;
+            }
+            .menu-icon{
+                display: block;
+                cursor: pointer;
+            }
+            .new-small-container {
+                flex-direction: column;
+                align-items: center;
+              }
+            
+              .new-col-3 {
+                width: 100%;
+                margin: 10px 0;
+              }
+              .single-product .row{
+                text-align: left;
+              }
+              .single-product .col-2{
+                padding: 20px 0;
+              }
+              .single-product h1{
+                font-size: 26px;
+                line-height: 22px;
+              }
+          }
+          .container1 {
+            margin:100px;
+
+          }
+    </style>
+</head>
+<body id="top">
+
+    <div class="loader_bg">
+        <div class="loader"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        setTimeout(function(){
+            $('.loader_bg').fadeToggle();
+        }, 1500);
+    </script>
+    
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<section class="hero">
+    <section class="navigation">
+        <header>
+            <div class="header-content">
+                <div class="logo"><a href="#"><img src="./android-chrome-512x512.png" alt="Logo"></a></div>
+                <div class="header-nav">
+                    <nav>
+                        <ul class="primary-nav">
+                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="./index.html">Social Media</a></li>
+                            <li><a href="./index.html">Our Products</a></li>
+                            <li class="hidden-sm hidden-xs"><a href="#video-bg">Impact</a></li>
+                        </ul>
+                        <ul class="member-actions">
+                            <li><a href="#map" class="login"></a></li>
+                            <li><a href="#rsvp" class="btn-white btn-small" style="margin-top: 20px;">Get Started</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="navicon">
+                    <a class="nav-toggle" href="#"><span></span></a>
+                </div>
+            </div>
+        </header>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="hero-content text-center">
+                    <!--<h1>Ram and Antara</h1>-->
+                    <img src="./logo_earth.png">
+                    <!--<p class="intro">Ram & Antara are getting hitched!</p>-->
+                    <!--<a href="#" class="btn btn-fill btn-large btn-margin-right">Scroll Down</a> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="down-arrow floating-arrow"><a href="#invitation"><i class="fa fa-angle-down"></i></a></div>
+</section>
+
+<section id="invitation" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                
+            </div>
+        </div>
+    </div>
+</section>
+<h2 style="text-align: center;">Buy from a wide range of sustainable and Eco-friendly products.</h2>
+
+<section class="container1">
+    <div class="row">
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/tote.png" alt="">
+            </a>                <h4>Hemp Tote bag - Beige</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="far fa-star"  aria-hidden="true"></i>
+            </div>
+            <p>$55.00</p>
+        </div>
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/bags.png" style="padding:200px  alt="">
+            </a>                <h4>Bamboo basket - Brown</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star-half"></i> <!-- Half-filled star -->
+                <i class="far fa-star"  aria-hidden="true"></i>
+            </div>
+            <p>$70.00</p>
+        </div>
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/clothes.png" alt="">
+            </a>                <h4>Organic cotton fabric</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star-half"></i> <!-- Half-filled star -->
+            </div>
+            <p>$40.00</p>
+        </div>
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/cutlery.png" alt="">
+            </a>                <h4>Coconut wood cutlery</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="far fa-star"  aria-hidden="true"></i>
+            </div>
+            <p>$15.00</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/oil.png" alt="">
+            </a>                <h4>Flaxseed Oil</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="far fa-star"  aria-hidden="true"></i>
+            </div>
+            <p>$35.00(3Lts.)</p>
+        </div>
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/soaps.png" alt="">
+            </a>                <h4>Castile Soap</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star-half"></i> <!-- Half-filled star -->
+                <i class="far fa-star"  aria-hidden="true"></i>
+            </div>
+            <p>$5.00</p>
+        </div>
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/tote.png" alt="">
+            </a>                <h4>Hemp Tote bag - Beige</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star-half"></i> <!-- Half-filled star -->
+            </div>
+            <p>$55.00</p>
+        </div>
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/bags.png" alt="">
+            </a>                <h4>Bamboo basket - Brown</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="far fa-star"  aria-hidden="true"></i>
+            </div>
+            <p>$70.00</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/clothes.png" alt="">
+            </a>                <h4>Organic cotton fabric</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="far fa-star"  aria-hidden="true"></i>
+            </div>
+            <p>$60.00</p>
+        </div>
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/cutlery.png" alt="">
+            </a>                <h4>Coconut wood cutlery</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star-half"></i> <!-- Half-filled star -->
+                <i class="far fa-star"  aria-hidden="true"></i>
+            </div>
+            <p>$15.00</p>
+        </div>
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/oil.png" alt="">
+            </a>                <h4>Flaxseed Oil</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star-half"></i> <!-- Half-filled star -->
+            </div>
+            <p>$70.00(6Lts.)</p>
+        </div>
+        <div class="col-4">
+            <a href="product_details.html">
+                <img src="img/eng_pics/soaps.png" alt="">
+            </a>                <h4>Castile Soap</h4>
+            <div class="rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="far fa-star"  aria-hidden="true"></i>
+            </div>
+            <p>$5.00</p>
+        </div>
+    </div>
+</div>
+</section>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center content">
+                <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
+                <p>Made By Team Void Main()  <span class="fa fa-heart pulse2"></span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="js/vendor/jquery-1.11.2.min.js" onerror="loadJsFromCDN('jquery.js')"></script>
+<script src="node_modules/waypoints/lib/jquery.waypoints.min.js" onerror="loadJsFromCDN('waypoints.js')"></script>
+<script src="js/jquery.fancybox.pack.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/jquery.flexslider-min.js"></script>
+<script src="js/jquery.mb.YTPlayer.min.js"></script>
+<script src="js/vendor/ouical.js"></script>
+<script src="js/scripts.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlPw3GQYI3faa_9mRE6plWuM7xNEmrwH0&callback=initMap"></script>
+<!-- Google Analytics -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-46465113-4', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+</html>
